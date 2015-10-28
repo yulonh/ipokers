@@ -9,11 +9,9 @@ var ArticleSchema = new Schema({
     author: String,
     cover: String,
     images: Array,
-    origin: {
-        url: {type: String, unique: true},
-        clicks: Number,
-        from: String
-    },
+    origin: {type: String, unique: true},
+    from: String,
+    clicks: Number,
     createdAt: Date,
     updatedAt: Date,
     active: {type: Boolean, default: true}

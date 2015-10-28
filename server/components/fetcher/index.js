@@ -54,10 +54,8 @@ function fetchArticles(url) {
             ret.articles.push({
                 title: title,
                 cover: cover,
-                origin: {
-                    url: url,
-                    clicks: +clicks
-                }
+                origin: url,
+                clicks: +clicks
             });
         });
 
@@ -67,13 +65,14 @@ function fetchArticles(url) {
         //抓取一篇文章的详细信息
         _.forEach(data.articles, function (article) {
             queue.push(
-                fetch(article.origin.url).then(function ($) {
+                fetch(article.origin).then(function ($) {
                     var info = $('.info').text();
                     article.createdAt = info.match(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/)[0];
                     article.author = info.match(/作者:(.*)点击/)[1];
-                    article.origin.from = info.match(/来源:(.*)作者/)[1];
+                    article.from = info.match(/来源:(.*)作者/)[1];
                     article.content = $('.ar_in_cont_3.width100').html();
                     article.images = [].map.call($('.ar_in_cont_3 img'), function (img) {
+                        console.log(img.attribs.src);
                         return img.attribs.src;
                     });
                     article.info = info;
@@ -113,7 +112,6 @@ function start(url){
         }else{
             exports.running = false;
         }
-
         Article.create(data.articles);
     }
     //
