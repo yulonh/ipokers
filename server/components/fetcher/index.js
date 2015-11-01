@@ -26,7 +26,7 @@ function fetch(url) {
 
         });
     } catch (err) {
-        deferred.reject(error);
+        deferred.reject(err);
     }
 
     return deferred.promise;
@@ -41,7 +41,7 @@ function fetchArticles(url) {
         };
         var nextPage = $('.next a');
         if(nextPage.text().indexOf('下一页') !== -1){
-            var nextPage = $('.next a')[0].attribs.href;
+            nextPage = $('.next a')[0].attribs.href;
             ret.nextUrl = URL.resolve(url, nextPage);
         }
         $('.arcilte_con .center li.content').each(function (i, item) {
@@ -90,7 +90,7 @@ function fetchArticles(url) {
     }).catch(function(err){
         return err;
     });
-};
+}
 
 //
 exports.running = false;
@@ -118,6 +118,6 @@ function start(url){
     fetchArticles(url).then(loop).catch(function(err){
         exports.running = false;
     });
-};
+}
 
 exports.start = start;
