@@ -3,7 +3,7 @@
 angular.module 'ipokersApp'
 .controller 'NavbarCtrl', ($scope, $location, Auth) ->
   $scope.menu = [
-    title: 'Home'
+    title: '首页'
     link: '/'
   ]
   $scope.isCollapsed = true
