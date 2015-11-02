@@ -4,7 +4,6 @@ angular.module 'ipokersApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'btford.socket-io',
   'ui.router'
 ]
 .config ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) ->

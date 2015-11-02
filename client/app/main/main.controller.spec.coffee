@@ -3,8 +3,7 @@
 describe 'Controller: MainCtrl', ->
 
   # load the controller's module
-  beforeEach module 'ipokersApp' 
-  beforeEach module 'socketMock' 
+  beforeEach module 'ipokersApp'
 
   MainCtrl = undefined
   scope = undefined
