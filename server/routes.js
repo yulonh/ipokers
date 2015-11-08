@@ -11,6 +11,8 @@ var config = require('./config/environment');
 module.exports = function (app) {
 
     // Insert routes below
+    app.use('/api/wechat', require('./api/wechat'));
+    app.use('/docs/swagger.json', require('./docs'));
     app.use('/api/article', require('./api/article'));
     app.use('/api/things', require('./api/thing'));
     app.use('/api/users', require('./api/user'));
