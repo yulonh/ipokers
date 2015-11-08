@@ -15,6 +15,8 @@ exports.index = function (req, res) {
     var sha1 = crypto.createHash('sha1');
     sha1.update(array.join(''));
     var signature1 = sha1.digest('hex');
+    console.log(req.query);
+    console.log(signature1);
     if (signature === signature1) {
         res.status(200).send(echostr);
     } else {
