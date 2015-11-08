@@ -11,7 +11,7 @@ exports.index = function (req, res) {
         nonce = req.query.nonce,
         echostr = req.query.echostr;
     var token = 'yulonh';
-    var array = [signature, timestamp, nonce].sort();
+    var array = [token, timestamp, nonce].sort();
     var sha1 = crypto.createHash('sha1');
     sha1.update(array.join(''));
     var signature1 = sha1.digest('hex');
